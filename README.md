@@ -140,6 +140,28 @@ surakshit-matdan/
 
 ---
 
+## 📸 Screenshots
+
+### 1. Landing Page
+![Landing Page](public/screencapture-localhost-5173-2026-03-12-01_07_14.png)
+
+### 2. Login - Aadhaar Verification
+![Login - Aadhaar Verification](public/screencapture-localhost-5173-login-2026-03-12-01_08_56.png)
+
+### 3. Login - OTP Verification
+![Login - OTP](public/screencapture-localhost-5173-login-2026-03-12-01_09_48.png)
+
+### 4. Login - Biometric & Wallet
+![Login - Biometric](public/screencapture-localhost-5173-login-2026-03-12-01_10_06.png)
+
+### 5. Admin Dashboard
+![Admin Dashboard](public/screencapture-localhost-5173-admin-2026-03-12-01_10_25.png)
+
+### 6. Vote - Candidate Selection
+![Vote Page](public/screencapture-localhost-5173-vote-1-2026-03-12-01_13_59.png)
+
+---
+
 ## 🔒 Security Features
 
 - ✅ Aadhaar-based identity verification
