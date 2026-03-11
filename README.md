@@ -9,6 +9,20 @@
   A hackathon-ready prototype for secure, transparent, and immutable voting powered by blockchain technology.
 </p>
 
+---
+
+## 👥 Team
+
+| Role | Name |
+|------|------|
+| **Lead** | Samnit Mehandiratta |
+| Team Member | Hemlata Chaudhary |
+| Team Member | Shobhit Mehandiratus |
+
+**Team Name:** BinaryBonsai
+
+---
+
 <p align="center">
   <img src="https://img.shields.io/badge/React-18.3-blue?style=flat&logo=react" alt="React"/>
   <img src="https://img.shields.io/badge/TypeScript-5.5-blue?style=flat&logo=typescript" alt="TypeScript"/>
