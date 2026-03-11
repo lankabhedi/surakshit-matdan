@@ -9,6 +9,15 @@
   A hackathon-ready prototype for secure, transparent, and immutable voting powered by blockchain technology.
 </p>
 
+<p align="center">
+  <img src="public/699856751b7db_india-innovates-2026.webp" alt="India Innovates 2026" width="400"/>
+</p>
+
+<p align="center">
+  <small>Organized by Municipal Corporation of Delhi (MCD)</small><br>
+  <img src="public/uploadedManual-696ccc3c7d843_whatsapp_image_2026-01-18_at_5.33.36_pm.webp" alt="MCD Logo" width="80"/>
+</p>
+
 ---
 
 ## 🏆 Hackathon Details
@@ -16,6 +25,7 @@
 | | |
 |---|---|
 | **Hackathon** | India Innovates 2026 |
+| **Organizer** | Municipal Corporation of Delhi (MCD) |
 | **Domain** | Digital Democracy |
 | **Problem Statement** | Secure E-Voting System |
 
