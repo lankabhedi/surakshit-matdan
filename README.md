@@ -189,7 +189,7 @@ surakshit-matdan/
 ![Login - Biometric](public/screencapture-localhost-5173-login-2026-03-12-01_10_06.png)
 
 ### 5. Admin Dashboard
-![Admin Dashboard](public/screencapture-localhost-5173-admin-2026-03-12-01_10_25.png)
+![Admin Dashboard](public/screencapture-localhost-5173-admin-2026-03-12-01_28_53.png)
 
 ### 6. Vote - Candidate Selection
 ![Vote Page](public/screencapture-localhost-5173-vote-1-2026-03-12-01_13_59.png)
