@@ -6,7 +6,7 @@
 
 <p align="center">
   <strong>Secure Blockchain Voting System</strong><br>
-  A hackathon-ready prototype for secure, transparent, and immutable voting powered by blockchain technology.
+  A hackathon-ready prototype for secure, transparent, and immutable voting powered by <b>ZKP (Zero Knowledge Proof)</b> and <b>Quantum-Resistant</b> blockchain technology.
 </p>
 
 <p align="center">
@@ -56,7 +56,9 @@
 
 ## ✨ Features
 
-### 🔐 Multi-Factor Authentication
+### 🔐 Zero Knowledge Proof (ZKP) Security
+- **Privacy-Preserving Verification** - Vote without revealing identity
+- **Quantum-Resistant Encryption** - Future-proof cryptographic security
 - **Aadhaar Integration** - Secure identity verification using India's UID system
 - **OTP Verification** - One-time password sent to registered mobile
 - **Biometric Auth** - Fingerprint and facial recognition
