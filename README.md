@@ -18,9 +18,6 @@
 | **Hackathon** | India Innovates 2026 |
 | **Domain** | Digital Democracy |
 | **Problem Statement** | Secure E-Voting System |
-| **Venue** | Bharat Mandapam, New Delhi |
-| **Date** | 28 March 2026 |
-| **Prize Pool** | ₹10,05,000+ |
 
 ---
 
