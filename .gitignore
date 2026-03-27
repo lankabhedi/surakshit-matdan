@@ -14,3 +14,27 @@ dist/
 # OS
 .DS_Store
 Thumbs.db
+
+# Aadhaar XML (Sensitive - Never Commit)
+*.xml
+!mock_aadhaar.xml
+
+# Aadhaar ZIPs (Sensitive - Never Commit)
+aadhaar-zips/
+*.zip
+
+# ZKP artifacts
+*.zkey
+*.vkey
+*.wasm
+proof.json
+public.json
+
+# CLI Data
+.zkp-data/
+
+# TypeScript build info
+*.tsbuildinfo
+*.js
+*.d.ts
+!vite.config.ts

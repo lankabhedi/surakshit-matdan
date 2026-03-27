@@ -10,6 +10,15 @@
 </p>
 
 <p align="center">
+  <a href="https://github.com/lankabhedi/surakshit-matdan">
+    <img src="https://img.shields.io/badge/India%20Innovates%202026-BinaryBonsai-blue?style=for-the-badge" alt="India Innovates 2026"/>
+  </a>
+  <a href="https://github.com/lankabhedi/surakshit-matdan/blob/main/LICENSE">
+    <img src="https://img.shields.io/github/license/lankabhedi/surakshit-matdan?style=for-the-badge" alt="License"/>
+  </a>
+</p>
+
+<p align="center">
   <img src="public/699856751b7db_india-innovates-2026.webp" alt="India Innovates 2026" width="400"/>
 </p>
 
@@ -56,6 +65,19 @@
 
 ## ✨ Features
 
+### 🖥️ CLI ZKP Voting System (NEW!)
+**Interactive command-line interface for secure voting:**
+- **Aadhaar ZIP Integration** - Direct UIDAI XML parsing with password authentication
+- **ZKP Proof Generation** - Zero-Knowledge proofs for voter eligibility
+- **Nullifier-Based Security** - Mathematical double-vote prevention
+- **Blockchain Visualization** - View votes and published nullifiers
+- **Anonymous Voting** - Vote choice never linked to identity
+- **Live Results** - Real-time election outcomes
+
+```bash
+npm run zkp-interactive
+```
+
 ### 🔐 Zero Knowledge Proof (ZKP) Security
 - **Privacy-Preserving Verification** - Vote without revealing identity
 - **Quantum-Resistant Encryption** - Future-proof cryptographic security
@@ -87,7 +109,7 @@
 ## 🚀 Getting Started
 
 ### Prerequisites
-- Node.js 18+ 
+- Node.js 18+
 - npm or pnpm
 
 ### Installation
@@ -101,9 +123,22 @@ cd surakshit-matdan
 
 # Install dependencies
 npm install
+```
 
-# Start development server
+### Development Server (Web App)
+
+```bash
 npm run dev
+```
+
+### CLI ZKP Voting System
+
+```bash
+# Start interactive CLI
+npm run zkp-interactive
+
+# Place Aadhaar ZIP files in ./aadhaar-zips/ folder
+# Follow the menu to generate proofs and vote
 ```
 
 ### Build for Production
@@ -135,6 +170,9 @@ npm run build
 | State | Zustand |
 | Routing | React Router 6 |
 | Blockchain | Ethers.js |
+| CLI | Node.js + TypeScript |
+| ZKP | SHA-3, Nullifiers |
+| XML Parsing | fast-xml-parser |
 | Build | Vite 5 |
 
 ---
@@ -144,9 +182,11 @@ npm run build
 ```
 surakshit-matdan/
 ├── src/
+│   ├── cli/               # CLI ZKP Voting System (NEW!)
+│   │   └── zkp-vote-interactive.ts
 │   ├── components/        # Reusable components
 │   │   └── VotedModal.tsx
-│   ├── pages/           # Page components
+│   ├── pages/             # Page components
 │   │   ├── Landing.tsx
 │   │   ├── Login.tsx
 │   │   ├── Register.tsx
@@ -154,23 +194,25 @@ surakshit-matdan/
 │   │   ├── Vote.tsx
 │   │   ├── AdminDashboard.tsx
 │   │   └── Results.tsx
-│   ├── store/           # State management
+│   ├── store/             # State management
 │   │   └── useStore.ts
-│   ├── data/            # Mock data
+│   ├── data/              # Mock data
 │   │   └── mockData.ts
-│   ├── utils/           # Utility functions
+│   ├── utils/             # Utility functions
 │   │   ├── auth.ts
 │   │   └── blockchain.ts
-│   ├── types/          # TypeScript types
+│   ├── types/             # TypeScript types
 │   │   └── index.ts
 │   ├── App.tsx
 │   ├── main.tsx
 │   └── index.css
 ├── public/
+├── aadhaar-zips/          # Aadhaar ZIP files (git-ignored)
+├── .zkp-data/             # CLI data (git-ignored)
 ├── index.html
 ├── package.json
-├── tailwind.config.js
-├── tsconfig.json
+├── CLI_README.md          # CLI documentation
+├── DEMO_GUIDE.md          # Hackathon demo script
 └── vite.config.ts
 ```
 
@@ -200,11 +242,28 @@ surakshit-matdan/
 
 ## 🔒 Security Features
 
+### Web App
 - ✅ Aadhaar-based identity verification
 - ✅ OTP validation
 - ✅ Biometric authentication support
 - ✅ Blockchain immutable records
 - ✅ Wallet-based transaction verification
+
+### CLI ZKP System
+- ✅ **Nullifier-based double vote prevention** - SHA-3 hash prevents duplicate voting
+- ✅ **Zero-knowledge proofs** - Prove eligibility without revealing identity
+- ✅ **Aadhaar ZIP parsing** - UIDAI-signed XML verification
+- ✅ **Anonymous voting** - Vote choice never linked to voter
+- ✅ **Public nullifier registry** - Mathematical verification
+- ✅ **Receipt-based verification** - Prove your vote was counted
+
+---
+
+## 📚 Documentation
+
+- **[CLI_README.md](CLI_README.md)** - Complete CLI usage guide
+- **[DEMO_GUIDE.md](DEMO_GUIDE.md)** - Hackathon demo script and talking points
+- **[SURAKSHIT_MATDAN_Architecture.pdf](SURAKSHIT_MATDAN_Architecture.pdf)** - System architecture
 
 ---
 
