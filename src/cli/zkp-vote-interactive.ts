@@ -5,11 +5,12 @@
  * India Innovates 2026 - Digital Democracy Domain
  */
 
+import { execSync } from 'child_process';
+
 import { XMLParser } from 'fast-xml-parser';
 import * as crypto from 'crypto';
 import * as fs from 'fs';
 import * as path from 'path';
-import * as unzipper from 'unzipper';
 import * as readline from 'readline';
 
 // ASCII Art Banner - SURAKSHIT MATDAN
@@ -111,11 +112,44 @@ function scanZIPFolder(): string[] {
 }
 
 async function extractXMLFromZIP(zipPath: string, password: string): Promise<string> {
-  const directory = await unzipper.Open.file(zipPath);
-  const xmlFile = directory.files.find(f => f.path.endsWith('.xml'));
-  if (!xmlFile) throw new Error('No XML file found in ZIP');
-  const content = await xmlFile.buffer(password);
-  return content.toString('utf-8');
+  // Use 7z to extract with password to a temp file
+  const tempDir = '/tmp/surakshit-matdan-extract';
+  const tempXmlPath = path.join(tempDir, 'extracted.xml');
+  
+  // Create temp directory
+  if (!fs.existsSync(tempDir)) {
+    fs.mkdirSync(tempDir, { recursive: true });
+  }
+  
+  // Clean any existing file
+  if (fs.existsSync(tempXmlPath)) {
+    fs.unlinkSync(tempXmlPath);
+  }
+  
+  try {
+    // Extract using 7z with password
+    execSync(`7z x -y -p${password} -o${tempDir} "${zipPath}"`, { stdio: 'pipe' });
+    
+    // Find extracted XML file
+    const files = fs.readdirSync(tempDir).filter(f => f.endsWith('.xml'));
+    if (files.length === 0) {
+      throw new Error('No XML file found in ZIP');
+    }
+    
+    // Read content
+    const xmlContent = fs.readFileSync(path.join(tempDir, files[0]), 'utf-8');
+    
+    // Cleanup
+    fs.unlinkSync(path.join(tempDir, files[0]));
+    fs.rmdirSync(tempDir);
+    
+    return xmlContent;
+  } catch (error: any) {
+    // Cleanup on error
+    if (fs.existsSync(tempXmlPath)) fs.unlinkSync(tempXmlPath);
+    if (fs.existsSync(tempDir)) fs.rmdirSync(tempDir);
+    throw new Error('Failed to extract ZIP. Wrong password?');
+  }
 }
 
 function prompt(question: string): Promise<string> {
@@ -235,7 +269,19 @@ async function generateProof() {
     const voterHash = generateVoterHash(voterInfo.uid);
     const proofHash = generateProofHash(voterHash, 0, nullifier);
     const proofsData = JSON.parse(fs.readFileSync(PROOFS_FILE, 'utf-8'));
-    proofsData.proofs.push({ voterHash, voterName: voterInfo.name, district: voterInfo.district, state: voterInfo.state, nullifier, proofHash, timestamp: new Date().toISOString(), electionId: electionData.electionId, circuit: 'voter_eligibility', publicInputs: { ageOver18: true, uniqueVoter: true, singleVote: true } });
+    proofsData.proofs.push({
+      voterHash,
+      nullifier,
+      proofHash,
+      timestamp: new Date().toISOString(),
+      electionId: electionData.electionId,
+      circuit: 'voter_eligibility',
+      publicInputs: {
+        ageOver18: true,
+        uniqueVoter: true,
+        singleVote: true
+      }
+    });
     fs.writeFileSync(PROOFS_FILE, JSON.stringify(proofsData, null, 2));
     const votersData = JSON.parse(fs.readFileSync(VOTERS_FILE, 'utf-8'));
     votersData.voters.push({ voterHash, name: voterInfo.name, district: voterInfo.district, state: voterInfo.state, nullifier, timestamp: new Date().toISOString() });
@@ -342,11 +388,11 @@ async function viewProofs() {
     console.log(`   ║  Proof #${i + 1}${' '.repeat(51)}║`);
     console.log('   ╠═══════════════════════════════════════════════════════════╣');
     console.log(`   ║  Voter Hash: ${proof.voterHash.substring(0, 20).padEnd(43)}║`);
-    console.log(`   ║  Name: ${proof.voterName.padEnd(51)}║`);
-    console.log(`   ║  District: ${proof.district.padEnd(48)}║`);
-    console.log(`   ║  Nullifier: ${proof.nullifier.substring(0, 16).padEnd(45)}║`);
-    console.log(`   ║  Proof Hash: ${proof.proofHash.substring(0, 16).padEnd(44)}║`);
+    console.log(`   ║  Nullifier: ${proof.nullifier.substring(0, 20).padEnd(45)}║`);
+    console.log(`   ║  Proof Hash: ${proof.proofHash.substring(0, 20).padEnd(44)}║`);
+    console.log('   ║  Circuit: voter_eligibility                     ║');
     console.log('   ║  Proofs: Age≥18 ✓ | Unique ✓ | Single ✓         ║');
+    console.log('   ║  Identity: ANONYMOUS (Zero-Knowledge)           ║');
     console.log('   ╚═══════════════════════════════════════════════════════════╝\n');
   });
   await prompt('   Press Enter to continue...');

@@ -19,8 +19,11 @@ Thumbs.db
 *.xml
 !mock_aadhaar.xml
 
-# Aadhaar ZIPs (Sensitive - Never Commit)
-aadhaar-zips/
+# Fake Demo Aadhaar ZIPs (OK to commit - all fake data)
+!aadhaar-zips/
+
+# Real Aadhaar ZIPs (NEVER commit)
+# aadhaar-zips/REAL_*.zip
 *.zip
 
 # ZKP artifacts
